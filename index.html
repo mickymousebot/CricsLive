@@ -247,18 +247,18 @@
         <!-- Navigation Tabs -->
         <div class="ts-nav-tabs">
             <button class="ts-tab-btn active" onclick="showTab('all')">All Channel</button>
-            <button class="ts-tab-btn" onclick="showTab('sports')">Sports</button>
-            <button class="ts-tab-btn" onclick="showTab('entertainment')">Entertainment</button>
+            <button class="ts-tab-btn" onclick="showTab('hindisports')">Hindi Channel</button>
+            <button class="ts-tab-btn" onclick="showTab('englishsports')">English Channel</button>
         </div>
 
         <!-- Channel Grids -->
         <div class="ts-channel-category" id="all">
             <div class="ts-channel-grid"></div>
         </div>
-        <div class="ts-channel-category" id="sports" style="display:none;">
+        <div class="ts-channel-category" id="hindisports" style="display:none;">
             <div class="ts-channel-grid"></div>
         </div>
-        <div class="ts-channel-category" id="entertainment" style="display:none;">
+        <div class="ts-channel-category" id="englishsports" style="display:none;">
             <div class="ts-channel-grid"></div>
         </div>
 <!-- Control Buttons -->
@@ -377,7 +377,7 @@
 <script>
       // Fetch JSON data from GitHub
         async function fetchChannels() {
-            const response = await fetch('https://raw.githubusercontent.com/ShreyanshMods/CricsLive/refs/heads/main/channels.json');
+            const response = await fetch('https://stream-cricket-d34f0-default-rtdb.firebaseio.com/.json');
             const data = await response.json();
             return data;
         }
@@ -408,8 +408,8 @@
 
             // Generate cards for each category
             generateChannelCards('all', channels.all);
-            generateChannelCards('sports', channels.sports);
-            generateChannelCards('entertainment', channels.entertainment);
+            generateChannelCards('hindisports', channels.hindisports);
+            generateChannelCards('englishsports', channels.englishsports);
         }
 
         // Play channel
