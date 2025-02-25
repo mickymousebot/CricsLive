@@ -2,47 +2,97 @@
   "all": [
     {
       "name": "Sports 18",
-      "url": "https://jcevents.jiocinema.com/bpk-tv/JC_ColorsCineplexHD/JCHLS/hdntl=exp=1740470379~acl=%2F*~id=0aa6691b27e8b9b85d48501b96cd32ec~data=hdntl~hmac=213efdbad0e0b8fd17a39e6e4c2c9316c6a225fb4472f7bc7baca7c0b2816237/JC_ColorsCineplexHD-audio_33636_hin=33600-video=148000.m3u8",
+      "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://i.ibb.co/ds1CnGcW/Uploaded-6910445402.jpg"
     },
     {
       "name": "T Sports",
-      "url": "https://jcevents.jiocinema.com/bpk-tv/JC_ColorsCineplexHD/JCHLS/hdntl=exp=1740470379~acl=%2F*~id=0aa6691b27e8b9b85d48501b96cd32ec~data=hdntl~hmac=213efdbad0e0b8fd17a39e6e4c2c9316c6a225fb4472f7bc7baca7c0b2816237/JC_ColorsCineplexHD-audio_33636_hin=33600-video=148000.m3u8",
+      "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://yt3.googleusercontent.com/eY6Yt0YDmWSheMmneYNjUD_2N5p8r2nFca9CENifrZ9TugWxrQW24oznjqBJPOFmSs2M6avemg=s900-c-k-c0x00ffffff-no-rj"
     },
     {
       "name": "Willow TV",
-      "url": "https://jcevents.jiocinema.com/bpk-tv/JC_ColorsCineplexHD/JCHLS/hdntl=exp=1740470379~acl=%2F*~id=0aa6691b27e8b9b85d48501b96cd32ec~data=hdntl~hmac=213efdbad0e0b8fd17a39e6e4c2c9316c6a225fb4472f7bc7baca7c0b2816237/JC_ColorsCineplexHD-audio_33636_hin=33600-video=148000.m3u8",
+      "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://i.ibb.co/6RmtG8zB/Uploaded-6910445402.jpg"
+    },
+    {
+      "name": "Sky Sports",
+      "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
+      "thumbnail": "https://i.ibb.co/VpxhFKrP/Uploaded-6910445402.jpg"
+    },
+    {
+      "name": "Willow Sports",
+      "url": "#",
+      "thumbnail": "https://i.ibb.co/yFBYspDH/Uploaded-6910445402.jpg"
+    },
+    {
+      "name": "Jio Cinema",
+      "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
+      "thumbnail": "https://i.ibb.co/5p4Rsh3/Uploaded-6910445402.jpg"
+    },
+    {
+      "name": "Hotstar",
+      "url": "#",
+      "thumbnail": "https://i.ibb.co/nMh16HqZ/Uploaded-6910445402.jpg"
+    },
+    {
+      "name": "Colour Cineplex",
+      "url": "#",
+      "thumbnail": "https://i.ibb.co/HfYJTVn8/Uploaded-6910445402.jpg"
+    },
+    {
+      "name": "Aaj Tak",
+      "url": "https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_720p/chunks.m3u8",
+      "thumbnail": "https://i.ibb.co/mrpCp4gr/Uploaded-6910445402.jpg"
+    },
+    {
+      "name": "India Today",
+      "url": "https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/live_720p/chunks.m3u8",
+      "thumbnail": "https://i.ibb.co/LXxH8c6n/Uploaded-6910445402.jpg"
     }
   ],
-  "sports": [
+  "hindisports": [
     {
       "name": "Sports 18",
-      "url": "https://jcevents.jiocinema.com/bpk-tv/JC_ColorsCineplexHD/JCHLS/hdntl=exp=1740470379~acl=%2F*~id=0aa6691b27e8b9b85d48501b96cd32ec~data=hdntl~hmac=213efdbad0e0b8fd17a39e6e4c2c9316c6a225fb4472f7bc7baca7c0b2816237/JC_ColorsCineplexHD-audio_33636_hin=33600-video=148000.m3u8",
+      "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://i.ibb.co/ds1CnGcW/Uploaded-6910445402.jpg"
     },
     {
-      "name": "T Sports",
-      "url": "https://jcevents.jiocinema.com/bpk-tv/JC_ColorsCineplexHD/JCHLS/hdntl=exp=1740470379~acl=%2F*~id=0aa6691b27e8b9b85d48501b96cd32ec~data=hdntl~hmac=213efdbad0e0b8fd17a39e6e4c2c9316c6a225fb4472f7bc7baca7c0b2816237/JC_ColorsCineplexHD-audio_33636_hin=33600-video=148000.m3u8",
-      "thumbnail": "https://yt3.googleusercontent.com/eY6Yt0YDmWSheMmneYNjUD_2N5p8r2nFca9CENifrZ9TugWxrQW24oznjqBJPOFmSs2M6avemg=s900-c-k-c0x00ffffff-no-rj"
+      "name": "Jio Cinema",
+      "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
+      "thumbnail": "https://i.ibb.co/5p4Rsh3/Uploaded-6910445402.jpg"
     },
     {
-      "name": "Willow TV",
-      "url": "https://jcevents.jiocinema.com/bpk-tv/JC_ColorsCineplexHD/JCHLS/hdntl=exp=1740470379~acl=%2F*~id=0aa6691b27e8b9b85d48501b96cd32ec~data=hdntl~hmac=213efdbad0e0b8fd17a39e6e4c2c9316c6a225fb4472f7bc7baca7c0b2816237/JC_ColorsCineplexHD-audio_33636_hin=33600-video=148000.m3u8",
-      "thumbnail": "https://i.ibb.co/6RmtG8zB/Uploaded-6910445402.jpg"
+      "name": "Hotstar",
+      "url": "#",
+      "thumbnail": "https://i.ibb.co/nMh16HqZ/Uploaded-6910445402.jpg"
+    },
+    {
+      "name": "Aaj Tak",
+      "url": "https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_720p/chunks.m3u8",
+      "thumbnail": "https://i.ibb.co/mrpCp4gr/Uploaded-6910445402.jpg"
     }
   ],
-  "entertainment": [
-    {
+  "englishsports": [
+     {
       "name": "T Sports",
-      "url": "https://jcevents.jiocinema.com/bpk-tv/JC_ColorsCineplexHD/JCHLS/hdntl=exp=1740470379~acl=%2F*~id=0aa6691b27e8b9b85d48501b96cd32ec~data=hdntl~hmac=213efdbad0e0b8fd17a39e6e4c2c9316c6a225fb4472f7bc7baca7c0b2816237/JC_ColorsCineplexHD-audio_33636_hin=33600-video=148000.m3u8",
+      "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://yt3.googleusercontent.com/eY6Yt0YDmWSheMmneYNjUD_2N5p8r2nFca9CENifrZ9TugWxrQW24oznjqBJPOFmSs2M6avemg=s900-c-k-c0x00ffffff-no-rj"
     },
     {
       "name": "Willow TV",
-      "url": "https://jcevents.jiocinema.com/bpk-tv/JC_ColorsCineplexHD/JCHLS/hdntl=exp=1740470379~acl=%2F*~id=0aa6691b27e8b9b85d48501b96cd32ec~data=hdntl~hmac=213efdbad0e0b8fd17a39e6e4c2c9316c6a225fb4472f7bc7baca7c0b2816237/JC_ColorsCineplexHD-audio_33636_hin=33600-video=148000.m3u8",
+      "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://i.ibb.co/6RmtG8zB/Uploaded-6910445402.jpg"
+    },
+    {
+      "name": "Sky Sports",
+      "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
+      "thumbnail": "https://i.ibb.co/VpxhFKrP/Uploaded-6910445402.jpg"
+    },
+    {
+      "name": "India Today",
+      "url": "https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/live_720p/chunks.m3u8",
+      "thumbnail": "https://i.ibb.co/LXxH8c6n/Uploaded-6910445402.jpg"
     }
   ]
 }
