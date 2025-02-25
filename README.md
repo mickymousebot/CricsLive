@@ -27,7 +27,7 @@ Welcome to the Cricket Live Stream Website! Your go-to destination for live cric
 
 ## Feedback and Support
 
-We value your feedback! If you have any suggestions or encounter any issues, please contact our support team at support@example.com.
+We value your feedback! If you have any suggestions or encounter any issues, please contact our support team at techshreyansh.talk@gmail.com.
 
 ---
 
