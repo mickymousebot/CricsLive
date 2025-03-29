@@ -486,7 +486,7 @@
         // Fetch JSON data from API
         async function fetchChannels() {
             try {
-                const response = await fetch('https://raw.githubusercontent.com/mickymousebot/CricsLive/refs/heads/main/channels.json');
+                const response = await fetch('https://stream-cricket-d34f0-default-rtdb.firebaseio.com/.json');
                 const data = await response.json();
                 return data;
             } catch (error) {
@@ -561,10 +561,12 @@
             let playUrl = channel.url;
             if (channel.qualities) {
                 const qualities = Object.keys(channel.qualities);
-                if (qualities.includes('high')) {
-                    playUrl = channel.qualities.high;
-                } else if (qualities.includes('medium')) {
-                    playUrl = channel.qualities.medium;
+                if (qualities.includes('1080p')) {
+                    playUrl = channel.qualities['1080p'];
+                } else if (qualities.includes('720p')) {
+                    playUrl = channel.qualities['720p'];
+                } else if (qualities.includes('480p')) {
+                    playUrl = channel.qualities['480p'];
                 } else if (qualities.length > 0) {
                     playUrl = channel.qualities[qualities[0]];
                 }
@@ -588,7 +590,7 @@
             qualitySelector.innerHTML = '';
             
             // Sort qualities from highest to lowest
-            const qualityOrder = ['high', 'medium', 'low', 'auto'];
+            const qualityOrder = ['1080p', '720p', '480p', '360p', 'auto'];
             const sortedQualities = Object.entries(qualities).sort((a, b) => {
                 return qualityOrder.indexOf(a[0]) - qualityOrder.indexOf(b[0]);
             });
@@ -605,7 +607,7 @@
                 };
                 
                 // Mark the first (highest) quality as active by default
-                if (quality === 'high' || (sortedQualities[0][0] === quality)) {
+                if ((quality === '1080p' || sortedQualities[0][0] === quality) && !document.querySelector('.ts-quality-btn.active')) {
                     btn.classList.add('active');
                 }
                 
