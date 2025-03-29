@@ -332,23 +332,6 @@
             font-weight: bold;
         }
 
-        .favorite-btn {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background: rgba(0,0,0,0.5);
-            border: none;
-            color: gold;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 2;
-        }
-
         .channel-name {
             position: absolute;
             bottom: 0;
@@ -362,6 +345,62 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+
+        /* Schedule Table Styles */
+        .schedule-table {
+            width: 95%;
+            margin: 15px auto;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .schedule-table th, .schedule-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .schedule-table th {
+            background: var(--primary-color);
+            color: black;
+            font-weight: bold;
+        }
+
+        .schedule-table tr:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .schedule-table .live {
+            color: var(--primary-color);
+            font-weight: bold;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .schedule-table .upcoming {
+            color: #ffcc00;
+        }
+
+        .schedule-table .completed {
+            color: #888;
+        }
+
+        .schedule-table .play-btn {
+            background: var(--primary-color);
+            color: black;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
         }
 
         .overlay {
@@ -592,6 +631,11 @@
                 font-size: 1rem;
                 padding: 12px 15px 12px 45px;
             }
+
+            /* Schedule table responsive */
+            .schedule-table {
+                font-size: 0.9rem;
+            }
         }
 
         @media (min-width: 1024px) {
@@ -623,6 +667,11 @@
 
             .channel-name {
                 font-size: 0.9rem;
+            }
+
+            /* Schedule table responsive */
+            .schedule-table {
+                font-size: 1rem;
             }
         }
 
@@ -703,7 +752,7 @@
                 <button class="ts-tab-btn active" onclick="showTab('all')">All Channel</button>
                 <button class="ts-tab-btn" onclick="showTab('hindisports')">Hindi Channel</button>
                 <button class="ts-tab-btn" onclick="showTab('englishsports')">English Channel</button>
-                <button class="ts-tab-btn" onclick="showTab('favorites')">Favorites</button>
+                <button class="ts-tab-btn" onclick="showTab('schedule')">Schedule</button>
             </div>
 
             <!-- Channel Grids -->
@@ -716,8 +765,24 @@
             <div class="ts-channel-category" id="englishsports" style="display:none;">
                 <div class="ts-channel-grid"></div>
             </div>
-            <div class="ts-channel-category" id="favorites" style="display:none;">
-                <div class="ts-channel-grid"></div>
+            
+            <!-- Schedule Tab -->
+            <div class="ts-channel-category" id="schedule" style="display:none;">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Event</th>
+                            <th>Channel</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleBody">
+                        <!-- Schedule items will be populated here -->
+                    </tbody>
+                </table>
             </div>
             
             <!-- Control Buttons -->
@@ -758,11 +823,6 @@
                     <input type="text" id="updateAllUrls" placeholder="Enter new M3U8 URL">
                     <button class="btn" onclick="updateAllQualityUrls()" style="margin-top: 5px;">Update</button>
                 </div>
-                <div class="settings-option">
-                    <label>
-                        <input type="checkbox" id="enableNotifications"> Enable Notifications
-                    </label>
-                </div>
             </div>
         </div>
         
@@ -789,10 +849,8 @@
         let currentChannel = null;
         let currentQuality = '720p';
         let allChannels = { all: [], hindisports: [], englishsports: [] };
-        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         let refreshInterval = null;
         let isDarkMode = true;
-        let notificationInterval = null;
         
         // Network speed measurement variables
         let speedTestInterval = null;
@@ -800,6 +858,42 @@
         let lastTime = 0;
         const speedHistory = [];
         const HISTORY_SIZE = 5;
+
+        // Sample schedule data
+        const scheduleData = [
+            {
+                event: "IPL 2024 - Mumbai Indians vs Delhi Capitals",
+                channel: "Star Sports 1",
+                date: new Date(Date.now() + 3600000).toLocaleDateString(),
+                time: new Date(Date.now() + 3600000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                status: "upcoming",
+                channelName: "Star Sports 1"
+            },
+            {
+                event: "Premier League - Arsenal vs Chelsea",
+                channel: "Sony Ten 2",
+                date: new Date(Date.now() + 86400000).toLocaleDateString(),
+                time: new Date(Date.now() + 86400000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                status: "upcoming",
+                channelName: "Sony Ten 2"
+            },
+            {
+                event: "La Liga - Barcelona vs Real Madrid",
+                channel: "ESPN",
+                date: new Date().toLocaleDateString(),
+                time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                status: "live",
+                channelName: "ESPN"
+            },
+            {
+                event: "UEFA Champions League - Final",
+                channel: "Sony Ten 1",
+                date: new Date(Date.now() - 86400000).toLocaleDateString(),
+                time: new Date(Date.now() - 86400000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                status: "completed",
+                channelName: "Sony Ten 1"
+            }
+        ];
 
         // Fetch JSON data from API
         async function fetchChannels() {
@@ -844,19 +938,8 @@
                 nameOverlay.className = 'channel-name';
                 nameOverlay.textContent = channel.name || 'Unknown Channel';
 
-                // Add favorite button
-                const favoriteBtn = document.createElement('button');
-                favoriteBtn.className = 'favorite-btn';
-                favoriteBtn.innerHTML = favorites.includes(channel.name) ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
-                favoriteBtn.onclick = (e) => {
-                    e.stopPropagation();
-                    toggleFavorite(channel.name);
-                    favoriteBtn.innerHTML = favorites.includes(channel.name) ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
-                };
-
                 card.appendChild(img);
                 card.appendChild(nameOverlay);
-                card.appendChild(favoriteBtn);
 
                 // Add quality badge if multiple qualities exist
                 if (channel.qualities && Object.keys(channel.qualities).length > 1) {
@@ -870,30 +953,77 @@
             });
         }
 
-        // Generate favorites tab
-        function generateFavoritesTab() {
-            const favChannels = [];
-            favorites.forEach(favName => {
-                // Check all categories for the favorite channel
-                ['all', 'hindisports', 'englishsports'].forEach(cat => {
-                    const found = allChannels[cat].find(ch => ch.name === favName);
-                    if (found) favChannels.push(found);
-                });
+        // Generate schedule table
+        function generateScheduleTable() {
+            const scheduleBody = document.getElementById('scheduleBody');
+            scheduleBody.innerHTML = '';
+
+            scheduleData.forEach(item => {
+                const row = document.createElement('tr');
+                
+                // Event
+                const eventCell = document.createElement('td');
+                eventCell.textContent = item.event;
+                row.appendChild(eventCell);
+                
+                // Channel
+                const channelCell = document.createElement('td');
+                channelCell.textContent = item.channel;
+                row.appendChild(channelCell);
+                
+                // Date
+                const dateCell = document.createElement('td');
+                dateCell.textContent = item.date;
+                row.appendChild(dateCell);
+                
+                // Time
+                const timeCell = document.createElement('td');
+                timeCell.textContent = item.time;
+                row.appendChild(timeCell);
+                
+                // Status
+                const statusCell = document.createElement('td');
+                statusCell.textContent = item.status;
+                statusCell.className = item.status;
+                row.appendChild(statusCell);
+                
+                // Action
+                const actionCell = document.createElement('td');
+                if (item.status === 'live') {
+                    const playBtn = document.createElement('button');
+                    playBtn.className = 'play-btn';
+                    playBtn.textContent = 'Watch';
+                    playBtn.onclick = () => {
+                        // Find the channel in our channels data
+                        const channel = findChannelByName(item.channelName);
+                        if (channel) {
+                            currentChannel = channel;
+                            playChannel(channel);
+                            // Switch to All Channels tab
+                            document.querySelectorAll('.ts-tab-btn').forEach(btn => btn.classList.remove('active'));
+                            document.querySelector('.ts-tab-btn:nth-child(1)').classList.add('active');
+                            document.querySelectorAll('.ts-channel-category').forEach(cat => cat.style.display = 'none');
+                            document.getElementById('all').style.display = 'block';
+                        }
+                    };
+                    actionCell.appendChild(playBtn);
+                } else {
+                    actionCell.textContent = '-';
+                }
+                row.appendChild(actionCell);
+                
+                scheduleBody.appendChild(row);
             });
-            
-            generateChannelCards('favorites', favChannels);
         }
 
-        // Toggle favorite status
-        function toggleFavorite(channelName) {
-            const index = favorites.indexOf(channelName);
-            if (index === -1) {
-                favorites.push(channelName);
-            } else {
-                favorites.splice(index, 1);
+        // Helper function to find channel by name
+        function findChannelByName(name) {
+            // Search in all categories
+            for (const category in allChannels) {
+                const found = allChannels[category].find(ch => ch.name === name);
+                if (found) return found;
             }
-            localStorage.setItem('favorites', JSON.stringify(favorites));
-            generateFavoritesTab();
+            return null;
         }
 
         // Calculate network speed
@@ -1083,62 +1213,6 @@
             }
         }
 
-        // Setup stream notifications
-        function setupNotifications() {
-            // Request permission
-            if ('Notification' in window) {
-                Notification.requestPermission();
-            }
-
-            // Load schedule
-            async function checkUpcomingStreams() {
-                try {
-                    // In a real app, fetch from your API
-                    const schedule = [
-                        {
-                            "title": "IPL 2024 - Mumbai vs Delhi",
-                            "time": new Date(Date.now() + 20 * 60000).toISOString(), // 20 mins from now for demo
-                            "channel": "Sports 18",
-                            "thumbnail": "https://i.ibb.co/ds1CnGcW/Uploaded-6910445402.jpg"
-                        },
-                        {
-                            "title": "Premier League - Arsenal vs Chelsea",
-                            "time": new Date(Date.now() + 60 * 60000).toISOString(), // 1 hour from now
-                            "channel": "Sky Sports",
-                            "thumbnail": "https://i.ibb.co/VpxhFKrP/Uploaded-6910445402.jpg"
-                        }
-                    ];
-                    
-                    const now = new Date();
-                    
-                    schedule.forEach(stream => {
-                        const streamTime = new Date(stream.time);
-                        const notifyTime = new Date(streamTime - 15 * 60000); // 15 mins before
-                        
-                        if (now > notifyTime && now < streamTime) {
-                            sendNotification(stream);
-                        }
-                    });
-                } catch (err) {
-                    console.error("Failed to check schedule:", err);
-                }
-            }
-
-            function sendNotification(stream) {
-                if (Notification.permission === 'granted' && 
-                    document.getElementById('enableNotifications').checked) {
-                    new Notification(`🔴 Live Soon: ${stream.title}`, {
-                        body: `Starts at ${new Date(stream.time).toLocaleTimeString()} on ${stream.channel}`,
-                        icon: stream.thumbnail || 'icon.png'
-                    });
-                }
-            }
-
-            // Check every 5 minutes
-            notificationInterval = setInterval(checkUpcomingStreams, 5 * 60000);
-            checkUpcomingStreams(); // Initial check
-        }
-
         // Toggle settings panel and quality selector
         function toggleSettings() {
             const panel = document.getElementById('settingsPanel');
@@ -1175,11 +1249,7 @@
                 if (!searchTerm) {
                     // Show all channels in current tab
                     const activeTab = document.querySelector('.ts-channel-category:not([style*="none"])');
-                    if (activeTab.id === 'favorites') {
-                        generateFavoritesTab();
-                    } else {
-                        generateChannelCards(activeTab.id, allChannels[activeTab.id]);
-                    }
+                    generateChannelCards(activeTab.id, allChannels[activeTab.id]);
                     return;
                 }
                 
@@ -1212,9 +1282,9 @@
             });
             event.target.classList.add('active');
             
-            // Regenerate content for the tab
-            if (tabId === 'favorites') {
-                generateFavoritesTab();
+            // Regenerate content for the tab if needed
+            if (tabId === 'schedule') {
+                generateScheduleTable();
             } else if (!document.querySelector(`#${tabId} .ts-channel-card`)) {
                 generateChannelCards(tabId, allChannels[tabId]);
             }
@@ -1306,10 +1376,9 @@
             generateChannelCards('all', channels.all || []);
             generateChannelCards('hindisports', channels.hindisports || []);
             generateChannelCards('englishsports', channels.englishsports || []);
-            generateFavoritesTab();
+            generateScheduleTable();
             
             // Set up features
-            setupNotifications();
             setupSearch();
             setupKeyboardShortcuts();
             
@@ -1366,7 +1435,6 @@
         // Clean up when leaving page
         window.addEventListener('beforeunload', () => {
             if (refreshInterval) clearInterval(refreshInterval);
-            if (notificationInterval) clearInterval(notificationInterval);
             if (speedTestInterval) clearInterval(speedTestInterval);
         });
     </script>
