@@ -26,7 +26,6 @@
             --alert-bg: #f0f0f0;
         }
         
-        /* Base Styles */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -34,7 +33,6 @@
             transition: background-color 0.3s, color 0.3s;
         }
         
-        /* Header Styles */
         .header {
             font-family: 'Roboto', sans-serif;
             background-color: rgba(0, 0, 0, 0.63);
@@ -52,7 +50,6 @@
             margin-right: auto;
         }
 
-        /* Neon Text Styles */
         .neon {
             color: var(--primary-color);
             text-shadow: 0 0 3px var(--primary-color), 0 0 6px var(--primary-color);
@@ -64,7 +61,6 @@
             margin-right: auto;
         }
 
-        /* Main Body Styles */
         .ts-body {
             background: var(--bg-gradient);
             color: var(--text-color);
@@ -81,7 +77,6 @@
             flex: 1;
         }
 
-        /* Player Section */
         .ts-player-section {
             position: relative;
             margin-bottom: 20px;
@@ -101,7 +96,7 @@
             border: 1px solid rgba(255,255,255,0.1);
         }
 
-        #tsIframePlayer {
+        #tsVideoPlayer {
             position: absolute;
             top: 0;
             left: 0;
@@ -111,12 +106,6 @@
             background-color: #000;
         }
 
-        /* PIP Active State */
-        .pip-active {
-            box-shadow: 0 0 0 2px var(--primary-color);
-        }
-
-        /* Overlay Elements */
         .ts-logo-overlay {
             position: absolute;
             top: 0;
@@ -141,7 +130,6 @@
             100% { opacity: 0.9; }
         }
 
-        /* Quality Selector Styles */
         .ts-quality-toggle {
             position: absolute;
             bottom: 10px;
@@ -205,7 +193,6 @@
             font-weight: bold;
         }
 
-        /* Control Elements */
         .ts-controls {
             position: fixed;
             bottom: 15px;
@@ -236,7 +223,6 @@
             box-shadow: 0 6px 15px rgba(2, 185, 79, 0.7);
         }
 
-        /* Navigation Tabs */
         .ts-nav-tabs {
             display: flex;
             flex-wrap: wrap;
@@ -268,7 +254,6 @@
             box-shadow: 0 2px 8px rgba(7, 206, 90, 0.5);
         }
 
-        /* Search Box */
         .search-container {
             width: 95%;
             margin: 0 auto 15px;
@@ -301,7 +286,6 @@
             color: var(--primary-color);
         }
 
-        /* Channel Grid */
         .ts-channel-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
@@ -380,7 +364,6 @@
             text-overflow: ellipsis;
         }
 
-        /* Alert Box Styles */
         .overlay {
             position: fixed;
             top: 0;
@@ -441,7 +424,6 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* Footer Styles */
         .footer {
             font-size: 0.8rem;
             color: #888;
@@ -459,13 +441,12 @@
             text-shadow: 0 0 3px var(--primary-color);
         }
 
-        /* Network Indicator */
-        .network-status {
+        .network-speed {
             position: fixed;
             top: 10px;
             right: 10px;
             background: rgba(0,0,0,0.7);
-            color: white;
+            color: #00ff00;
             padding: 5px 10px;
             border-radius: 15px;
             font-size: 0.8rem;
@@ -475,19 +456,6 @@
             z-index: 1000;
         }
 
-        .network-status.good {
-            color: #00ff00;
-        }
-
-        .network-status.moderate {
-            color: #ffcc00;
-        }
-
-        .network-status.poor {
-            color: #ff3300;
-        }
-
-        /* Settings Panel */
         .settings-panel {
             position: fixed;
             bottom: 80px;
@@ -527,7 +495,6 @@
             color: var(--text-color);
         }
 
-        /* Desktop Styles */
         @media (min-width: 768px) {
             .header {
                 font-size: 2.2rem;
@@ -627,7 +594,6 @@
             }
         }
 
-        /* Large Desktop Styles */
         @media (min-width: 1024px) {
             .header {
                 font-size: 2.5rem;
@@ -660,7 +626,6 @@
             }
         }
 
-        /* Fullscreen Styles */
         .ts-player-container:fullscreen {
             width: 100vw !important;
             height: 100vh !important;
@@ -682,7 +647,6 @@
             border-radius: 0 !important;
         }
 
-        /* Orientation-specific adjustments */
         @media (orientation: landscape) and (max-height: 500px) {
             .ts-player-container {
                 padding-bottom: 60vh !important;
@@ -697,13 +661,6 @@
                 gap: 8px;
             }
         }
-
-        /* Hide PIP button on mobile */
-        @media (max-width: 768px) {
-            #pipButton {
-                display: none !important;
-            }
-        }
     </style>
 </head>
 <body class="ts-body">
@@ -712,16 +669,16 @@
             <div class="header">Ghost's Streaming Now</div>
             <div class="neon">Enjoy the Match!</div>
             
-            <!-- Network Status Indicator -->
-            <div class="network-status" id="networkStatus">
-                <i class="fas fa-wifi"></i>
-                <span>Good</span>
+            <!-- Network Speed Indicator -->
+            <div class="network-speed" id="networkSpeed">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>0 Mbps</span>
             </div>
             
             <!-- Player Section -->
             <div class="ts-player-section">
                 <div class="ts-player-container">
-                    <iframe allow="autoplay; encrypted-media" id="tsIframePlayer" src=""></iframe>
+                    <video id="tsVideoPlayer" controls></video>
                     <div class="ts-logo-overlay">
                         <div>Ghosts Player</div>
                         <small>Select Channel</small>
@@ -767,9 +724,6 @@
             <div class="ts-controls">
                 <button class="ts-control-btn" onclick="toggleSettings()">
                     <i class="fas fa-cog"></i>
-                </button>
-                <button class="ts-control-btn" id="pipButton" title="Picture-in-Picture">
-                    <i class="fas fa-clone"></i>
                 </button>
                 <button class="ts-control-btn" onclick="toggleFullScreen()">⛶</button>
                 <button class="ts-control-btn" onclick="toggleTheme()">
@@ -838,8 +792,14 @@
         let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         let refreshInterval = null;
         let isDarkMode = true;
-        let pipWindow = null;
         let notificationInterval = null;
+        
+        // Network speed measurement variables
+        let speedTestInterval = null;
+        let lastBytes = 0;
+        let lastTime = 0;
+        const speedHistory = [];
+        const HISTORY_SIZE = 5;
 
         // Fetch JSON data from API
         async function fetchChannels() {
@@ -936,9 +896,53 @@
             generateFavoritesTab();
         }
 
+        // Calculate network speed
+        function calculateNetworkSpeed() {
+            const video = document.getElementById('tsVideoPlayer');
+            if (!video || !video.buffered || video.buffered.length === 0) return 0;
+            
+            // Get total bytes buffered
+            const bufferedEnd = video.buffered.end(video.buffered.length - 1);
+            const timeNow = performance.now();
+            
+            // Calculate speed if we have previous measurements
+            if (lastTime > 0 && lastBytes > 0) {
+                const timeDiff = (timeNow - lastTime) / 1000; // in seconds
+                const byteDiff = bufferedEnd - lastBytes;
+                
+                if (timeDiff > 0 && byteDiff > 0) {
+                    const speedBps = byteDiff / timeDiff;
+                    const speedMbps = (speedBps * 8) / 1000000; // Convert to Mbps
+                    
+                    // Store speed in history
+                    speedHistory.push(speedMbps);
+                    if (speedHistory.length > HISTORY_SIZE) {
+                        speedHistory.shift();
+                    }
+                    
+                    // Calculate average speed
+                    const avgSpeed = speedHistory.reduce((a, b) => a + b, 0) / speedHistory.length;
+                    return avgSpeed;
+                }
+            }
+            
+            // Update for next measurement
+            lastBytes = bufferedEnd;
+            lastTime = timeNow;
+            
+            return 0;
+        }
+
+        // Update network speed display
+        function updateNetworkSpeed() {
+            const speed = calculateNetworkSpeed();
+            document.getElementById('networkSpeed').querySelector('span').textContent = 
+                speed > 0 ? `${speed.toFixed(1)} Mbps` : '-- Mbps';
+        }
+
         // Play channel with selected quality
         function playChannel(channel) {
-            const iframe = document.getElementById('tsIframePlayer');
+            const video = document.getElementById('tsVideoPlayer');
             const qualityToggle = document.getElementById('qualityToggle');
             const qualitySelector = document.getElementById('qualitySelector');
             
@@ -974,7 +978,21 @@
                 }
             }
             
-            iframe.src = playUrl;
+            // Reset speed measurement
+            lastBytes = 0;
+            lastTime = 0;
+            speedHistory.length = 0;
+            
+            // Setup video source
+            video.src = playUrl;
+            video.load();
+            video.play().catch(e => console.log('Autoplay prevented:', e));
+            
+            // Start speed measurement
+            if (speedTestInterval) {
+                clearInterval(speedTestInterval);
+            }
+            speedTestInterval = setInterval(updateNetworkSpeed, 1000);
             
             // Setup quality selector if multiple qualities exist
             if (channel.qualities && Object.keys(channel.qualities).length > 1) {
@@ -984,35 +1002,6 @@
                 qualityToggle.style.display = 'none';
                 qualitySelector.style.display = 'none';
             }
-            
-            // Start monitoring stream health
-            monitorStreamHealth();
-        }
-
-        // Monitor stream health
-        function monitorStreamHealth() {
-            const iframe = document.getElementById('tsIframePlayer');
-            const networkStatus = document.getElementById('networkStatus');
-            
-            // Simulate network monitoring (in a real app, you'd use more sophisticated methods)
-            const updateNetworkStatus = () => {
-                const statuses = ['good', 'moderate', 'poor'];
-                const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
-                networkStatus.className = `network-status ${randomStatus}`;
-                networkStatus.querySelector('span').textContent = randomStatus.charAt(0).toUpperCase() + randomStatus.slice(1);
-                
-                // If poor, suggest reloading
-                if (randomStatus === 'poor') {
-                    setTimeout(() => {
-                        if (confirm('Poor network detected. Reload stream?')) {
-                            iframe.src = iframe.src; // Refresh
-                        }
-                    }, 3000);
-                }
-            };
-            
-            // Update every 10-30 seconds randomly
-            setInterval(updateNetworkStatus, 10000 + Math.random() * 20000);
         }
 
         // Populate quality selector buttons
@@ -1035,7 +1024,7 @@
                 btn.textContent = quality.toUpperCase();
                 btn.onclick = () => {
                     currentQuality = quality;
-                    document.getElementById('tsIframePlayer').src = url;
+                    document.getElementById('tsVideoPlayer').src = url;
                     // Update active state
                     document.querySelectorAll('.ts-quality-btn').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
@@ -1064,7 +1053,7 @@
             }
             
             // Update the current stream
-            document.getElementById('tsIframePlayer').src = newUrl;
+            document.getElementById('tsVideoPlayer').src = newUrl;
             
             // Refresh quality selector
             populateQualitySelector(currentChannel.qualities);
@@ -1086,53 +1075,12 @@
             if (minutes > 0) {
                 refreshInterval = setInterval(() => {
                     if (currentChannel) {
-                        const iframe = document.getElementById('tsIframePlayer');
-                        iframe.src = iframe.src; // Refresh
+                        const video = document.getElementById('tsVideoPlayer');
+                        video.src = video.src; // Refresh
                         console.log('Stream auto-refreshed');
                     }
                 }, minutes * 60 * 1000);
             }
-        }
-
-        // Setup Picture-in-Picture
-        function setupPIP() {
-            const pipButton = document.getElementById('pipButton');
-            const player = document.getElementById('tsIframePlayer');
-            
-            // Check if PIP is supported
-            if (!('pictureInPictureEnabled' in document)) {
-                pipButton.style.display = 'none';
-                return;
-            }
-
-            pipButton.addEventListener('click', async () => {
-                try {
-                    if (document.pictureInPictureElement) {
-                        await document.exitPictureInPicture();
-                        pipButton.classList.remove('pip-active');
-                    } else {
-                        // For iframes, we need this workaround
-                        const video = document.createElement('video');
-                        video.src = player.src;
-                        video.muted = true; // Required for autoplay in PIP
-                        video.autoplay = true;
-                        document.body.appendChild(video);
-                        
-                        await video.requestPictureInPicture();
-                        pipWindow = video;
-                        
-                        video.addEventListener('leavepictureinpicture', () => {
-                            document.body.removeChild(video);
-                            pipButton.classList.remove('pip-active');
-                        });
-                        
-                        pipButton.classList.add('pip-active');
-                    }
-                } catch (err) {
-                    console.error("PIP failed:", err);
-                    alert("PIP not supported for this stream");
-                }
-            });
         }
 
         // Setup stream notifications
@@ -1215,7 +1163,7 @@
             localStorage.setItem('themeMode', isDarkMode ? 'dark' : 'light');
             
             // Update icon
-            const themeBtn = document.querySelector('.ts-control-btn:nth-child(4) i');
+            const themeBtn = document.querySelector('.ts-control-btn:nth-child(3) i');
             themeBtn.className = isDarkMode ? 'fas fa-moon' : 'fas fa-sun';
         }
 
@@ -1326,13 +1274,14 @@
                 if (e.key === 'f' || e.key === 'F') {
                     toggleFullScreen();
                 }
-                // Space to play/pause (would need more complex player control)
+                // Space to play/pause
                 else if (e.key === ' ') {
-                    // Implement play/pause if using video element instead of iframe
-                }
-                // PIP toggle (P key)
-                else if (e.key === 'p' || e.key === 'P') {
-                    document.getElementById('pipButton').click();
+                    const video = document.getElementById('tsVideoPlayer');
+                    if (video.paused) {
+                        video.play();
+                    } else {
+                        video.pause();
+                    }
                 }
             });
         }
@@ -1360,7 +1309,6 @@
             generateFavoritesTab();
             
             // Set up features
-            setupPIP();
             setupNotifications();
             setupSearch();
             setupKeyboardShortcuts();
@@ -1419,7 +1367,7 @@
         window.addEventListener('beforeunload', () => {
             if (refreshInterval) clearInterval(refreshInterval);
             if (notificationInterval) clearInterval(notificationInterval);
-            if (pipWindow) document.body.removeChild(pipWindow);
+            if (speedTestInterval) clearInterval(speedTestInterval);
         });
     </script>
 </body>
