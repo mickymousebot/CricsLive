@@ -1,178 +1,327 @@
 {
   "all": [
     {
+      "id": "sports18",
       "name": "Sports 18",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://i.ibb.co/ds1CnGcW/Uploaded-6910445402.jpg",
       "qualities": {
-        "720p": "https://002.fclplayer.online/live/csstream2/chunklist.m3u8?vidictid=20176396593&id=1002",
-        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8",
-        "360p": "https://002.fclplayer.online/live/csstream2/chunklist.m3u8?vidictid=20176396593&id=1002"
-      }
+        "720p": [
+          "https://002.fclplayer.online/live/csstream2/chunklist.m3u8?vidictid=20176396593&id=1002",
+          "https://backup1.cfd/live/sports18-720p.m3u8"
+        ],
+        "480p": [
+          "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8",
+          "https://backup1.cfd/live/sports18-480p.m3u8"
+        ],
+        "360p": [
+          "https://002.fclplayer.online/live/csstream2/chunklist.m3u8?vidictid=20176396593&id=1002"
+        ]
+      },
+      "schedule": [
+        {
+          "title": "IPL 2024 - Mumbai vs Delhi",
+          "time": "2024-05-15T19:30:00+05:30",
+          "thumbnail": "https://i.ibb.co/ds1CnGcW/Uploaded-6910445402.jpg"
+        }
+      ]
     },
     {
+      "id": "tsports",
       "name": "T Sports",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://yt3.googleusercontent.com/eY6Yt0YDmWSheMmneYNjUD_2N5p8r2nFca9CENifrZ9TugWxrQW24oznjqBJPOFmSs2M6avemg=s900-c-k-c0x00ffffff-no-rj",
       "qualities": {
-        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
-      }
+        "720p": [
+          "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
+          "https://backup1.cfd/live/tsports-720p.m3u8"
+        ],
+        "480p": [
+          "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+        ]
+      },
+      "schedule": [
+        {
+          "title": "Premier League Highlights",
+          "time": "2024-05-16T22:00:00+05:30",
+          "thumbnail": "https://yt3.googleusercontent.com/eY6Yt0YDmWSheMmneYNjUD_2N5p8r2nFca9CENifrZ9TugWxrQW24oznjqBJPOFmSs2M6avemg=s900-c-k-c0x00ffffff-no-rj"
+        }
+      ]
     },
     {
+      "id": "willowtv",
       "name": "Willow TV",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://i.ibb.co/6RmtG8zB/Uploaded-6910445402.jpg",
       "qualities": {
-        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8",
-        "360p": "https://cdnt20.t20hd.cfd/live/m3-360p.m3u8"
-      }
+        "720p": [
+          "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8"
+        ],
+        "480p": [
+          "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+        ],
+        "360p": [
+          "https://cdnt20.t20hd.cfd/live/m3-360p.m3u8"
+        ]
+      },
+      "schedule": [
+        {
+          "title": "International T20",
+          "time": "2024-05-17T15:00:00+05:30",
+          "thumbnail": "https://i.ibb.co/6RmtG8zB/Uploaded-6910445402.jpg"
+        }
+      ]
     },
     {
+      "id": "skysports",
       "name": "Sky Sports",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://i.ibb.co/VpxhFKrP/Uploaded-6910445402.jpg",
       "qualities": {
-        "1080p": "https://cdnt20.t20hd.cfd/live/m3-1080p.m3u8",
-        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8"
-      }
+        "1080p": [
+          "https://cdnt20.t20hd.cfd/live/m3-1080p.m3u8"
+        ],
+        "720p": [
+          "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8"
+        ]
+      },
+      "schedule": [
+        {
+          "title": "F1 Grand Prix",
+          "time": "2024-05-18T18:00:00+05:30",
+          "thumbnail": "https://i.ibb.co/VpxhFKrP/Uploaded-6910445402.jpg"
+        }
+      ]
     },
     {
+      "id": "willowsports",
       "name": "Willow Sports",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://i.ibb.co/VcdPFPWy/Uploaded-6910445402.jpg",
       "qualities": {
-        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+        "720p": [
+          "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8"
+        ],
+        "480p": [
+          "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+        ]
       }
     },
     {
+      "id": "jiocinema",
       "name": "Jio Cinema",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://i.ibb.co/5p4Rsh3/Uploaded-6910445402.jpg",
       "qualities": {
-        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8",
-        "360p": "https://cdnt20.t20hd.cfd/live/m3-360p.m3u8"
+        "720p": [
+          "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8"
+        ],
+        "480p": [
+          "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+        ],
+        "360p": [
+          "https://cdnt20.t20hd.cfd/live/m3-360p.m3u8"
+        ]
       }
     },
     {
+      "id": "hotstar",
       "name": "Hotstar",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://i.ibb.co/nMh16HqZ/Uploaded-6910445402.jpg",
       "qualities": {
-        "1080p": "https://cdnt20.t20hd.cfd/live/m3-1080p.m3u8",
-        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+        "1080p": [
+          "https://cdnt20.t20hd.cfd/live/m3-1080p.m3u8"
+        ],
+        "720p": [
+          "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8"
+        ],
+        "480p": [
+          "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+        ]
       }
     },
     {
+      "id": "colourcineplex",
       "name": "Colour Cineplex",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://i.ibb.co/HfYJTVn8/Uploaded-6910445402.jpg",
       "qualities": {
-        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+        "720p": [
+          "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8"
+        ],
+        "480p": [
+          "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+        ]
       }
     },
     {
+      "id": "aajtak",
       "name": "Aaj Tak",
       "url": "https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_720p/chunks.m3u8",
       "thumbnail": "https://i.ibb.co/mrpCp4gr/Uploaded-6910445402.jpg",
       "qualities": {
-        "720p": "https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_234p/chunks.m3u8",
-        "480p": "https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_404p/chunks.m3u8"
+        "720p": [
+          "https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_234p/chunks.m3u8"
+        ],
+        "480p": [
+          "https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_404p/chunks.m3u8"
+        ]
       }
     },
     {
+      "id": "indiatoday",
       "name": "India Today",
       "url": "https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/live_720p/chunks.m3u8",
       "thumbnail": "https://i.ibb.co/LXxH8c6n/Uploaded-6910445402.jpg",
       "qualities": {
-        "720p": "https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/live_720p/chunks.m3u8",
-        "480p": "https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/live_480p/chunks.m3u8"
+        "720p": [
+          "https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/live_720p/chunks.m3u8"
+        ],
+        "480p": [
+          "https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/live_480p/chunks.m3u8"
+        ]
       }
     }
   ],
   "hindisports": [
     {
+      "id": "sports18-hindi",
       "name": "Sports 18",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://i.ibb.co/ds1CnGcW/Uploaded-6910445402.jpg",
       "qualities": {
-        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8",
-        "360p": "https://cdnt20.t20hd.cfd/live/m3-360p.m3u8"
+        "720p": [
+          "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8"
+        ],
+        "480p": [
+          "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+        ],
+        "360p": [
+          "https://cdnt20.t20hd.cfd/live/m3-360p.m3u8"
+        ]
       }
     },
     {
+      "id": "jiocinema-hindi",
       "name": "Jio Cinema",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://i.ibb.co/5p4Rsh3/Uploaded-6910445402.jpg",
       "qualities": {
-        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8",
-        "360p": "https://cdnt20.t20hd.cfd/live/m3-360p.m3u8"
+        "720p": [
+          "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8"
+        ],
+        "480p": [
+          "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+        ],
+        "360p": [
+          "https://cdnt20.t20hd.cfd/live/m3-360p.m3u8"
+        ]
       }
     },
     {
+      "id": "hotstar-hindi",
       "name": "Hotstar",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://i.ibb.co/nMh16HqZ/Uploaded-6910445402.jpg",
       "qualities": {
-        "1080p": "https://cdnt20.t20hd.cfd/live/m3-1080p.m3u8",
-        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+        "1080p": [
+          "https://cdnt20.t20hd.cfd/live/m3-1080p.m3u8"
+        ],
+        "720p": [
+          "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8"
+        ],
+        "480p": [
+          "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+        ]
       }
     },
     {
+      "id": "aajtak-hindi",
       "name": "Aaj Tak",
       "url": "https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_720p/chunks.m3u8",
       "thumbnail": "https://i.ibb.co/mrpCp4gr/Uploaded-6910445402.jpg",
       "qualities": {
-        "720p": "https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_720p/chunks.m3u8",
-        "480p": "https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_480p/chunks.m3u8"
+        "720p": [
+          "https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_720p/chunks.m3u8"
+        ],
+        "480p": [
+          "https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_480p/chunks.m3u8"
+        ]
       }
     }
   ],
   "englishsports": [
     {
+      "id": "tsports-eng",
       "name": "T Sports",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://yt3.googleusercontent.com/eY6Yt0YDmWSheMmneYNjUD_2N5p8r2nFca9CENifrZ9TugWxrQW24oznjqBJPOFmSs2M6avemg=s900-c-k-c0x00ffffff-no-rj",
       "qualities": {
-        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+        "720p": [
+          "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8"
+        ],
+        "480p": [
+          "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+        ]
       }
     },
     {
+      "id": "willowtv-eng",
       "name": "Willow TV",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://i.ibb.co/6RmtG8zB/Uploaded-6910445402.jpg",
       "qualities": {
-        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8",
-        "360p": "https://cdnt20.t20hd.cfd/live/m3-360p.m3u8"
+        "720p": [
+          "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8"
+        ],
+        "480p": [
+          "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+        ],
+        "360p": [
+          "https://cdnt20.t20hd.cfd/live/m3-360p.m3u8"
+        ]
       }
     },
     {
+      "id": "skysports-eng",
       "name": "Sky Sports",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
       "thumbnail": "https://i.ibb.co/VpxhFKrP/Uploaded-6910445402.jpg",
       "qualities": {
-        "1080p": "https://cdnt20.t20hd.cfd/live/m3-1080p.m3u8",
-        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8"
+        "1080p": [
+          "https://cdnt20.t20hd.cfd/live/m3-1080p.m3u8"
+        ],
+        "720p": [
+          "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8"
+        ]
       }
     },
     {
+      "id": "indiatoday-eng",
       "name": "India Today",
       "url": "https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/live_720p/chunks.m3u8",
       "thumbnail": "https://i.ibb.co/LXxH8c6n/Uploaded-6910445402.jpg",
       "qualities": {
-        "720p": "https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/live_720p/chunks.m3u8",
-        "480p": "https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/live_480p/chunks.m3u8"
+        "720p": [
+          "https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/live_720p/chunks.m3u8"
+        ],
+        "480p": [
+          "https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/live_480p/chunks.m3u8"
+        ]
       }
+    }
+  ],
+  "schedule": [
+    {
+      "channelId": "sports18",
+      "events": [
+        {
+          "title": "IPL 2024 Finals",
+          "time": "2024-05-26T19:30:00+05:30",
+          "thumbnail": "https://i.ibb.co/ds1CnGcW/Uploaded-6910445402.jpg"
+        }
+      ]
     }
   ]
 }
