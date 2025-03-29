@@ -1,6 +1,42 @@
-{
-  "name": "IPL 2024 - Mumbai vs Delhi",
-  "time": "2024-05-15T19:30:00+05:30",
-  "channel": "Sports 18",
-  "thumbnail": "https://example.com/ipl-thumb.jpg"
-}
+[
+    {
+        "date": "Monday, June 10",
+        "events": [
+            {
+                "time": "10:00 AM",
+                "title": "Premier League: Arsenal vs Chelsea",
+                "channel": "Sky Sports Premier League",
+                "channelId": "sky-sports-premier-league"
+            },
+            {
+                "time": "1:30 PM",
+                "title": "Cricket: India vs Australia - T20 World Cup",
+                "channel": "Star Sports 1",
+                "channelId": "star-sports-1"
+            },
+            {
+                "time": "8:00 PM",
+                "title": "UEFA Champions League Final",
+                "channel": "BT Sport 1",
+                "channelId": "bt-sport-1"
+            }
+        ]
+    },
+    {
+        "date": "Tuesday, June 11",
+        "events": [
+            {
+                "time": "9:00 AM",
+                "title": "Wimbledon: Day 1",
+                "channel": "BBC Two",
+                "channelId": "bbc-two"
+            },
+            {
+                "time": "2:00 PM",
+                "title": "Formula 1: Practice Session",
+                "channel": "ESPN",
+                "channelId": "espn"
+            }
+        ]
+    }
+]
