@@ -111,6 +111,11 @@
             background-color: #000;
         }
 
+        /* PIP Active State */
+        .pip-active {
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+
         /* Overlay Elements */
         .ts-logo-overlay {
             position: absolute;
@@ -692,6 +697,13 @@
                 gap: 8px;
             }
         }
+
+        /* Hide PIP button on mobile */
+        @media (max-width: 768px) {
+            #pipButton {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 <body class="ts-body">
@@ -756,6 +768,9 @@
                 <button class="ts-control-btn" onclick="toggleSettings()">
                     <i class="fas fa-cog"></i>
                 </button>
+                <button class="ts-control-btn" id="pipButton" title="Picture-in-Picture">
+                    <i class="fas fa-clone"></i>
+                </button>
                 <button class="ts-control-btn" onclick="toggleFullScreen()">⛶</button>
                 <button class="ts-control-btn" onclick="toggleTheme()">
                     <i class="fas fa-moon"></i>
@@ -789,6 +804,11 @@
                     <input type="text" id="updateAllUrls" placeholder="Enter new M3U8 URL">
                     <button class="btn" onclick="updateAllQualityUrls()" style="margin-top: 5px;">Update</button>
                 </div>
+                <div class="settings-option">
+                    <label>
+                        <input type="checkbox" id="enableNotifications"> Enable Notifications
+                    </label>
+                </div>
             </div>
         </div>
         
@@ -818,6 +838,8 @@
         let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         let refreshInterval = null;
         let isDarkMode = true;
+        let pipWindow = null;
+        let notificationInterval = null;
 
         // Fetch JSON data from API
         async function fetchChannels() {
@@ -1072,6 +1094,103 @@
             }
         }
 
+        // Setup Picture-in-Picture
+        function setupPIP() {
+            const pipButton = document.getElementById('pipButton');
+            const player = document.getElementById('tsIframePlayer');
+            
+            // Check if PIP is supported
+            if (!('pictureInPictureEnabled' in document)) {
+                pipButton.style.display = 'none';
+                return;
+            }
+
+            pipButton.addEventListener('click', async () => {
+                try {
+                    if (document.pictureInPictureElement) {
+                        await document.exitPictureInPicture();
+                        pipButton.classList.remove('pip-active');
+                    } else {
+                        // For iframes, we need this workaround
+                        const video = document.createElement('video');
+                        video.src = player.src;
+                        video.muted = true; // Required for autoplay in PIP
+                        video.autoplay = true;
+                        document.body.appendChild(video);
+                        
+                        await video.requestPictureInPicture();
+                        pipWindow = video;
+                        
+                        video.addEventListener('leavepictureinpicture', () => {
+                            document.body.removeChild(video);
+                            pipButton.classList.remove('pip-active');
+                        });
+                        
+                        pipButton.classList.add('pip-active');
+                    }
+                } catch (err) {
+                    console.error("PIP failed:", err);
+                    alert("PIP not supported for this stream");
+                }
+            });
+        }
+
+        // Setup stream notifications
+        function setupNotifications() {
+            // Request permission
+            if ('Notification' in window) {
+                Notification.requestPermission();
+            }
+
+            // Load schedule
+            async function checkUpcomingStreams() {
+                try {
+                    // In a real app, fetch from your API
+                    const schedule = [
+                        {
+                            "title": "IPL 2024 - Mumbai vs Delhi",
+                            "time": new Date(Date.now() + 20 * 60000).toISOString(), // 20 mins from now for demo
+                            "channel": "Sports 18",
+                            "thumbnail": "https://i.ibb.co/ds1CnGcW/Uploaded-6910445402.jpg"
+                        },
+                        {
+                            "title": "Premier League - Arsenal vs Chelsea",
+                            "time": new Date(Date.now() + 60 * 60000).toISOString(), // 1 hour from now
+                            "channel": "Sky Sports",
+                            "thumbnail": "https://i.ibb.co/VpxhFKrP/Uploaded-6910445402.jpg"
+                        }
+                    ];
+                    
+                    const now = new Date();
+                    
+                    schedule.forEach(stream => {
+                        const streamTime = new Date(stream.time);
+                        const notifyTime = new Date(streamTime - 15 * 60000); // 15 mins before
+                        
+                        if (now > notifyTime && now < streamTime) {
+                            sendNotification(stream);
+                        }
+                    });
+                } catch (err) {
+                    console.error("Failed to check schedule:", err);
+                }
+            }
+
+            function sendNotification(stream) {
+                if (Notification.permission === 'granted' && 
+                    document.getElementById('enableNotifications').checked) {
+                    new Notification(`🔴 Live Soon: ${stream.title}`, {
+                        body: `Starts at ${new Date(stream.time).toLocaleTimeString()} on ${stream.channel}`,
+                        icon: stream.thumbnail || 'icon.png'
+                    });
+                }
+            }
+
+            // Check every 5 minutes
+            notificationInterval = setInterval(checkUpcomingStreams, 5 * 60000);
+            checkUpcomingStreams(); // Initial check
+        }
+
         // Toggle settings panel
         function toggleSettings() {
             const panel = document.getElementById('settingsPanel');
@@ -1085,7 +1204,7 @@
             localStorage.setItem('themeMode', isDarkMode ? 'dark' : 'light');
             
             // Update icon
-            const themeBtn = document.querySelector('.ts-control-btn:nth-child(3) i');
+            const themeBtn = document.querySelector('.ts-control-btn:nth-child(4) i');
             themeBtn.className = isDarkMode ? 'fas fa-moon' : 'fas fa-sun';
         }
 
@@ -1200,6 +1319,10 @@
                 else if (e.key === ' ') {
                     // Implement play/pause if using video element instead of iframe
                 }
+                // PIP toggle (P key)
+                else if (e.key === 'p' || e.key === 'P') {
+                    document.getElementById('pipButton').click();
+                }
             });
         }
 
@@ -1224,6 +1347,12 @@
             generateChannelCards('hindisports', channels.hindisports || []);
             generateChannelCards('englishsports', channels.englishsports || []);
             generateFavoritesTab();
+            
+            // Set up features
+            setupPIP();
+            setupNotifications();
+            setupSearch();
+            setupKeyboardShortcuts();
             
             // Set up event listeners
             document.getElementById('autoRefresh').addEventListener('change', setupAutoRefresh);
@@ -1260,12 +1389,13 @@
                     }, 300);
                 }
             });
-            
-            // Setup search
-            setupSearch();
-            
-            // Setup keyboard shortcuts
-            setupKeyboardShortcuts();
+        });
+
+        // Clean up when leaving page
+        window.addEventListener('beforeunload', () => {
+            if (refreshInterval) clearInterval(refreshInterval);
+            if (notificationInterval) clearInterval(notificationInterval);
+            if (pipWindow) document.body.removeChild(pipWindow);
         });
     </script>
 </body>
