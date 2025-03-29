@@ -473,7 +473,6 @@
             align-items: center;
             gap: 5px;
             z-index: 1000;
-            display: none; /* Hidden by default */
         }
 
         .network-status.good {
@@ -841,7 +840,6 @@
         let isDarkMode = true;
         let pipWindow = null;
         let notificationInterval = null;
-        let networkMonitorInterval = null;
 
         // Fetch JSON data from API
         async function fetchChannels() {
@@ -988,110 +986,33 @@
             }
             
             // Start monitoring stream health
-            startNetworkMonitoring();
+            monitorStreamHealth();
         }
 
-        // Improved network monitoring
-        function startNetworkMonitoring() {
+        // Monitor stream health
+        function monitorStreamHealth() {
+            const iframe = document.getElementById('tsIframePlayer');
             const networkStatus = document.getElementById('networkStatus');
             
-            // Clear any existing monitoring
-            if (networkMonitorInterval) {
-                clearInterval(networkMonitorInterval);
-            }
-            
-            // Show network status indicator
-            networkStatus.style.display = 'flex';
-            
-            // Use browser's Network Information API if available
-            if (navigator.connection) {
-                const connection = navigator.connection;
+            // Simulate network monitoring (in a real app, you'd use more sophisticated methods)
+            const updateNetworkStatus = () => {
+                const statuses = ['good', 'moderate', 'poor'];
+                const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+                networkStatus.className = `network-status ${randomStatus}`;
+                networkStatus.querySelector('span').textContent = randomStatus.charAt(0).toUpperCase() + randomStatus.slice(1);
                 
-                const updateNetworkStatus = () => {
-                    let statusText = 'Good';
-                    let statusClass = 'good';
-                    
-                    // Check effective connection type
-                    if (connection.effectiveType) {
-                        switch(connection.effectiveType) {
-                            case 'slow-2g':
-                            case '2g':
-                                statusText = 'Slow';
-                                statusClass = 'poor';
-                                break;
-                            case '3g':
-                                statusText = 'Moderate';
-                                statusClass = 'moderate';
-                                break;
-                            default:
-                                statusText = 'Good';
-                                statusClass = 'good';
+                // If poor, suggest reloading
+                if (randomStatus === 'poor') {
+                    setTimeout(() => {
+                        if (confirm('Poor network detected. Reload stream?')) {
+                            iframe.src = iframe.src; // Refresh
                         }
-                    }
-                    
-                    // Check downlink speed if available
-                    if (connection.downlink) {
-                        if (connection.downlink < 1) {
-                            statusText = 'Slow';
-                            statusClass = 'poor';
-                        } else if (connection.downlink < 2.5) {
-                            statusText = 'Moderate';
-                            statusClass = 'moderate';
-                        }
-                    }
-                    
-                    // Check if we're actually offline
-                    if (!navigator.onLine) {
-                        statusText = 'Offline';
-                        statusClass = 'poor';
-                    }
-                    
-                    networkStatus.className = `network-status ${statusClass}`;
-                    networkStatus.querySelector('span').textContent = statusText;
-                    
-                    // Only suggest reload if connection is poor AND we're online
-                    if (statusClass === 'poor' && navigator.onLine) {
-                        setTimeout(() => {
-                            // Check status again before prompting
-                            if (networkStatus.className.includes('poor')) {
-                                const shouldReload = confirm('Your connection seems slow. Try reloading the stream?');
-                                if (shouldReload && currentChannel) {
-                                    document.getElementById('tsIframePlayer').src = document.getElementById('tsIframePlayer').src;
-                                }
-                            }
-                        }, 5000);
-                    }
-                };
-                
-                // Update when connection changes
-                if (connection.addEventListener) {
-                    connection.addEventListener('change', updateNetworkStatus);
+                    }, 3000);
                 }
-                
-                // Initial update
-                updateNetworkStatus();
-                
-                // Also check periodically in case events don't fire
-                networkMonitorInterval = setInterval(updateNetworkStatus, 15000);
-            } else {
-                // Fallback for browsers without Network Information API
-                networkStatus.querySelector('span').textContent = 'Unknown';
-                
-                // Simple online/offline detection
-                const updateOnlineStatus = () => {
-                    if (navigator.onLine) {
-                        networkStatus.className = 'network-status good';
-                        networkStatus.querySelector('span').textContent = 'Online';
-                    } else {
-                        networkStatus.className = 'network-status poor';
-                        networkStatus.querySelector('span').textContent = 'Offline';
-                    }
-                };
-                
-                window.addEventListener('online', updateOnlineStatus);
-                window.addEventListener('offline', updateOnlineStatus);
-                updateOnlineStatus();
-            }
+            };
+            
+            // Update every 10-30 seconds randomly
+            setInterval(updateNetworkStatus, 10000 + Math.random() * 20000);
         }
 
         // Populate quality selector buttons
@@ -1270,10 +1191,21 @@
             checkUpcomingStreams(); // Initial check
         }
 
-        // Toggle settings panel
+        // Toggle settings panel and quality selector
         function toggleSettings() {
             const panel = document.getElementById('settingsPanel');
+            const qualitySelector = document.getElementById('qualitySelector');
+            
+            // Toggle settings panel
             panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+            
+            // Show quality selector if a channel is playing and has multiple qualities
+            if (panel.style.display === 'block' && currentChannel && 
+                currentChannel.qualities && Object.keys(currentChannel.qualities).length > 1) {
+                qualitySelector.style.display = 'flex';
+            } else {
+                qualitySelector.style.display = 'none';
+            }
         }
 
         // Toggle dark/light mode
@@ -1439,17 +1371,30 @@
                 if (currentChannel) playChannel(currentChannel);
             });
             
-            // Set up quality toggle click outside handler
+            // Set up quality toggle
+            document.getElementById('qualityToggle').addEventListener('click', function(e) {
+                e.stopPropagation();
+                const qualitySelector = document.getElementById('qualitySelector');
+                qualitySelector.style.display = qualitySelector.style.display === 'flex' ? 'none' : 'flex';
+                
+                // Ensure settings panel stays closed when using quality toggle
+                document.getElementById('settingsPanel').style.display = 'none';
+            });
+            
+            // Handle clicks outside elements
             document.addEventListener('click', (e) => {
                 const qualityToggle = document.getElementById('qualityToggle');
                 const qualitySelector = document.getElementById('qualitySelector');
                 const settingsPanel = document.getElementById('settingsPanel');
+                const settingsBtn = document.querySelector('.ts-control-btn:nth-child(1)');
                 
+                // Close quality selector if clicking outside
                 if (!qualityToggle.contains(e.target) && !qualitySelector.contains(e.target)) {
                     qualitySelector.style.display = 'none';
                 }
                 
-                if (!e.target.closest('.ts-control-btn') && !settingsPanel.contains(e.target)) {
+                // Close settings panel if clicking outside
+                if (!settingsBtn.contains(e.target) && !settingsPanel.contains(e.target)) {
                     settingsPanel.style.display = 'none';
                 }
             });
@@ -1474,7 +1419,6 @@
         window.addEventListener('beforeunload', () => {
             if (refreshInterval) clearInterval(refreshInterval);
             if (notificationInterval) clearInterval(notificationInterval);
-            if (networkMonitorInterval) clearInterval(networkMonitorInterval);
             if (pipWindow) document.body.removeChild(pipWindow);
         });
     </script>
