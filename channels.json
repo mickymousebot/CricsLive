@@ -3,96 +3,176 @@
     {
       "name": "Sports 18",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-      "thumbnail": "https://i.ibb.co/ds1CnGcW/Uploaded-6910445402.jpg"
+      "thumbnail": "https://i.ibb.co/ds1CnGcW/Uploaded-6910445402.jpg",
+      "qualities": {
+        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
+        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8",
+        "360p": "https://cdnt20.t20hd.cfd/live/m3-360p.m3u8"
+      }
     },
     {
       "name": "T Sports",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-      "thumbnail": "https://yt3.googleusercontent.com/eY6Yt0YDmWSheMmneYNjUD_2N5p8r2nFca9CENifrZ9TugWxrQW24oznjqBJPOFmSs2M6avemg=s900-c-k-c0x00ffffff-no-rj"
+      "thumbnail": "https://yt3.googleusercontent.com/eY6Yt0YDmWSheMmneYNjUD_2N5p8r2nFca9CENifrZ9TugWxrQW24oznjqBJPOFmSs2M6avemg=s900-c-k-c0x00ffffff-no-rj",
+      "qualities": {
+        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
+        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+      }
     },
     {
       "name": "Willow TV",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-      "thumbnail": "https://i.ibb.co/6RmtG8zB/Uploaded-6910445402.jpg"
+      "thumbnail": "https://i.ibb.co/6RmtG8zB/Uploaded-6910445402.jpg",
+      "qualities": {
+        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
+        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8",
+        "360p": "https://cdnt20.t20hd.cfd/live/m3-360p.m3u8"
+      }
     },
     {
       "name": "Sky Sports",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-      "thumbnail": "https://i.ibb.co/VpxhFKrP/Uploaded-6910445402.jpg"
+      "thumbnail": "https://i.ibb.co/VpxhFKrP/Uploaded-6910445402.jpg",
+      "qualities": {
+        "1080p": "https://cdnt20.t20hd.cfd/live/m3-1080p.m3u8",
+        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8"
+      }
     },
     {
       "name": "Willow Sports",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-      "thumbnail": "https://i.ibb.co/VcdPFPWy/Uploaded-6910445402.jpg"
+      "thumbnail": "https://i.ibb.co/VcdPFPWy/Uploaded-6910445402.jpg",
+      "qualities": {
+        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
+        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+      }
     },
     {
       "name": "Jio Cinema",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-      "thumbnail": "https://i.ibb.co/5p4Rsh3/Uploaded-6910445402.jpg"
+      "thumbnail": "https://i.ibb.co/5p4Rsh3/Uploaded-6910445402.jpg",
+      "qualities": {
+        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
+        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8",
+        "360p": "https://cdnt20.t20hd.cfd/live/m3-360p.m3u8"
+      }
     },
     {
       "name": "Hotstar",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-      "thumbnail": "https://i.ibb.co/nMh16HqZ/Uploaded-6910445402.jpg"
+      "thumbnail": "https://i.ibb.co/nMh16HqZ/Uploaded-6910445402.jpg",
+      "qualities": {
+        "1080p": "https://cdnt20.t20hd.cfd/live/m3-1080p.m3u8",
+        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
+        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+      }
     },
     {
       "name": "Colour Cineplex",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-      "thumbnail": "https://i.ibb.co/HfYJTVn8/Uploaded-6910445402.jpg"
+      "thumbnail": "https://i.ibb.co/HfYJTVn8/Uploaded-6910445402.jpg",
+      "qualities": {
+        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
+        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+      }
     },
     {
       "name": "Aaj Tak",
       "url": "https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_720p/chunks.m3u8",
-      "thumbnail": "https://i.ibb.co/mrpCp4gr/Uploaded-6910445402.jpg"
+      "thumbnail": "https://i.ibb.co/mrpCp4gr/Uploaded-6910445402.jpg",
+      "qualities": {
+        "720p": "https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_720p/chunks.m3u8",
+        "480p": "https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_480p/chunks.m3u8"
+      }
     },
     {
       "name": "India Today",
       "url": "https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/live_720p/chunks.m3u8",
-      "thumbnail": "https://i.ibb.co/LXxH8c6n/Uploaded-6910445402.jpg"
+      "thumbnail": "https://i.ibb.co/LXxH8c6n/Uploaded-6910445402.jpg",
+      "qualities": {
+        "720p": "https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/live_720p/chunks.m3u8",
+        "480p": "https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/live_480p/chunks.m3u8"
+      }
     }
   ],
   "hindisports": [
     {
       "name": "Sports 18",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-      "thumbnail": "https://i.ibb.co/ds1CnGcW/Uploaded-6910445402.jpg"
+      "thumbnail": "https://i.ibb.co/ds1CnGcW/Uploaded-6910445402.jpg",
+      "qualities": {
+        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
+        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8",
+        "360p": "https://cdnt20.t20hd.cfd/live/m3-360p.m3u8"
+      }
     },
     {
       "name": "Jio Cinema",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-      "thumbnail": "https://i.ibb.co/5p4Rsh3/Uploaded-6910445402.jpg"
+      "thumbnail": "https://i.ibb.co/5p4Rsh3/Uploaded-6910445402.jpg",
+      "qualities": {
+        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
+        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8",
+        "360p": "https://cdnt20.t20hd.cfd/live/m3-360p.m3u8"
+      }
     },
     {
       "name": "Hotstar",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-      "thumbnail": "https://i.ibb.co/nMh16HqZ/Uploaded-6910445402.jpg"
+      "thumbnail": "https://i.ibb.co/nMh16HqZ/Uploaded-6910445402.jpg",
+      "qualities": {
+        "1080p": "https://cdnt20.t20hd.cfd/live/m3-1080p.m3u8",
+        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
+        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+      }
     },
     {
       "name": "Aaj Tak",
       "url": "https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_720p/chunks.m3u8",
-      "thumbnail": "https://i.ibb.co/mrpCp4gr/Uploaded-6910445402.jpg"
+      "thumbnail": "https://i.ibb.co/mrpCp4gr/Uploaded-6910445402.jpg",
+      "qualities": {
+        "720p": "https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_720p/chunks.m3u8",
+        "480p": "https://aajtaklive-amd.akamaized.net/hls/live/2014416/aajtak/aajtaklive/live_480p/chunks.m3u8"
+      }
     }
   ],
   "englishsports": [
-     {
+    {
       "name": "T Sports",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-      "thumbnail": "https://yt3.googleusercontent.com/eY6Yt0YDmWSheMmneYNjUD_2N5p8r2nFca9CENifrZ9TugWxrQW24oznjqBJPOFmSs2M6avemg=s900-c-k-c0x00ffffff-no-rj"
+      "thumbnail": "https://yt3.googleusercontent.com/eY6Yt0YDmWSheMmneYNjUD_2N5p8r2nFca9CENifrZ9TugWxrQW24oznjqBJPOFmSs2M6avemg=s900-c-k-c0x00ffffff-no-rj",
+      "qualities": {
+        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
+        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8"
+      }
     },
     {
       "name": "Willow TV",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-      "thumbnail": "https://i.ibb.co/6RmtG8zB/Uploaded-6910445402.jpg"
+      "thumbnail": "https://i.ibb.co/6RmtG8zB/Uploaded-6910445402.jpg",
+      "qualities": {
+        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
+        "480p": "https://cdnt20.t20hd.cfd/live/m3-480p.m3u8",
+        "360p": "https://cdnt20.t20hd.cfd/live/m3-360p.m3u8"
+      }
     },
     {
       "name": "Sky Sports",
       "url": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8",
-      "thumbnail": "https://i.ibb.co/VpxhFKrP/Uploaded-6910445402.jpg"
+      "thumbnail": "https://i.ibb.co/VpxhFKrP/Uploaded-6910445402.jpg",
+      "qualities": {
+        "1080p": "https://cdnt20.t20hd.cfd/live/m3-1080p.m3u8",
+        "720p": "https://cdnt20.t20hd.cfd/live/m3-720p.m3u8"
+      }
     },
     {
       "name": "India Today",
       "url": "https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/live_720p/chunks.m3u8",
-      "thumbnail": "https://i.ibb.co/LXxH8c6n/Uploaded-6910445402.jpg"
+      "thumbnail": "https://i.ibb.co/LXxH8c6n/Uploaded-6910445402.jpg",
+      "qualities": {
+        "720p": "https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/live_720p/chunks.m3u8",
+        "480p": "https://indiatodaylive.akamaized.net/hls/live/2014320/indiatoday/indiatodaylive/live_480p/chunks.m3u8"
+      }
     }
   ]
 }
