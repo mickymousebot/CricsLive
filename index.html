@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ghosts Live Stream</title>
     <link rel="icon" type="image/png" href="https://i.ibb.co/ds1CnGcW/Uploaded-6910445402.jpg">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Base Styles */
         * {
@@ -124,24 +126,31 @@
             background: rgba(0,0,0,0.7);
             color: white;
             border: 1px solid #00ff00;
-            padding: 6px 12px;
-            border-radius: 15px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
+            justify-content: center;
             backdrop-filter: blur(3px);
             transition: all 0.2s ease;
-            font-size: 0.8rem;
+            font-size: 1rem;
         }
 
         .ts-quality-toggle:hover {
             background: rgba(0,255,0,0.3);
+            transform: rotate(90deg);
+        }
+
+        .ts-quality-toggle i {
+            color: #00ff00;
         }
 
         .ts-quality-selector {
             display: none;
             position: absolute;
-            bottom: 40px;
+            bottom: 50px;
             left: 10px;
             z-index: 100;
             background: rgba(0,0,0,0.7);
@@ -410,14 +419,15 @@
             }
 
             .ts-quality-toggle {
-                padding: 8px 15px;
-                font-size: 1rem;
+                width: 42px;
+                height: 42px;
+                font-size: 1.2rem;
                 bottom: 15px;
                 left: 15px;
             }
 
             .ts-quality-selector {
-                bottom: 50px;
+                bottom: 60px;
                 left: 15px;
                 padding: 10px;
                 border-radius: 10px;
@@ -504,10 +514,32 @@
             }
         }
 
+        /* Fullscreen Styles */
+        .ts-player-container:fullscreen {
+            width: 100vw !important;
+            height: 100vh !important;
+            padding-bottom: 0 !important;
+            border-radius: 0 !important;
+        }
+
+        .ts-player-container:-webkit-full-screen {
+            width: 100vw !important;
+            height: 100vh !important;
+            padding-bottom: 0 !important;
+            border-radius: 0 !important;
+        }
+
+        .ts-player-container:-moz-full-screen {
+            width: 100vw !important;
+            height: 100vh !important;
+            padding-bottom: 0 !important;
+            border-radius: 0 !important;
+        }
+
         /* Orientation-specific adjustments */
         @media (orientation: landscape) and (max-height: 500px) {
             .ts-player-container {
-                padding-bottom: 60vh;
+                padding-bottom: 60vh !important;
             }
             
             .ts-nav-tabs {
@@ -535,9 +567,9 @@
                         <div>Ghosts Player</div>
                         <small>Select Channel</small>
                     </div>
-                    <!-- Quality Toggle Button -->
+                    <!-- Quality Toggle Button (Now an Icon) -->
                     <div class="ts-quality-toggle" id="qualityToggle" style="display:none;">
-                        <span>Quality</span>
+                        <i class="fas fa-cog"></i>
                     </div>
                     <!-- Quality Selector -->
                     <div class="ts-quality-selector" id="qualitySelector"></div>
@@ -736,10 +768,12 @@
             event.target.classList.add('active');
         }
 
-        // Fullscreen handling
+        // Fullscreen handling with auto-rotation
         function toggleFullScreen() {
             const player = document.querySelector('.ts-player-container');
+            
             if (!document.fullscreenElement) {
+                // Enter fullscreen
                 if (player.requestFullscreen) {
                     player.requestFullscreen();
                 } else if (player.webkitRequestFullscreen) {
@@ -747,13 +781,26 @@
                 } else if (player.msRequestFullscreen) {
                     player.msRequestFullscreen();
                 }
+                
+                // Lock orientation to landscape (if supported)
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch(err => {
+                        console.log("Orientation lock failed: ", err);
+                    });
+                }
             } else {
+                // Exit fullscreen
                 if (document.exitFullscreen) {
                     document.exitFullscreen();
                 } else if (document.webkitExitFullscreen) {
                     document.webkitExitFullscreen();
                 } else if (document.msExitFullscreen) {
                     document.msExitFullscreen();
+                }
+                
+                // Unlock orientation
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
                 }
             }
         }
@@ -793,18 +840,19 @@
                 }
             });
             
-            // Handle orientation changes
+            // Handle orientation changes (for non-fullscreen)
             window.addEventListener('orientationchange', function() {
-                // Small delay to allow orientation to complete
-                setTimeout(function() {
-                    if (window.innerHeight > window.innerWidth) {
-                        // Portrait
-                        document.querySelector('.ts-player-container').style.paddingBottom = '56.25%';
-                    } else {
-                        // Landscape - adjust player height
-                        document.querySelector('.ts-player-container').style.paddingBottom = '50vh';
-                    }
-                }, 300);
+                if (!document.fullscreenElement) {
+                    setTimeout(function() {
+                        if (window.innerHeight > window.innerWidth) {
+                            // Portrait
+                            document.querySelector('.ts-player-container').style.paddingBottom = '56.25%';
+                        } else {
+                            // Landscape
+                            document.querySelector('.ts-player-container').style.paddingBottom = '50vh';
+                        }
+                    }, 300);
+                }
             });
         });
     </script>
